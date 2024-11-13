@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Web App</title>
+</head>
+<body>
+    <h1>CRUD dengan JavaScript dan PHP</h1>
+    
+    <form id="userForm">
+        <input type="text" id="idadmin" />
+        <input type="text" id="nama_admin" placeholder="Nama Admin" required />
+        <input type="text" id="tanggal_lahir" placeholder="Tanggal Lahir" required />
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="text" id="password" placeholder="password" required>
+        <button type="submit">Simpan</button>
+    </form>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nama Admin</th>
+                <th>Tanggal Lahir</th>
+                <th>Username</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="userTable"></tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", loadUsers);
+      
+        document.getElementById("userForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const id = document.getElementById("idadmin").value;
+            if (id) {
+                updateUser(id);
+            } else {
+                createUser();
+            }
+        });
+
+        function loadUsers() {
+            fetch("https://webacp16.merak.web.id/API-peminjaman-barang/GET_admin.php")
+                .then(response => response.json())
+                .then(data => {
+                    const table = document.getElementById("userTable");
+                    table.innerHTML = "";
+                    data.forEach(user => {
+                        const row = `<tr>
+                            <td>${user.idadmin}</td>
+                            <td>${user.nama_admin}</td>
+                            <td>${user.tanggal_lahir}</td>
+                            <td>${user.username}</td>
+                            <td>${user.password}</td>
+                            <td>
+                                <button onclick="editUser(${user.idadmin}, '${user.nama_admin}', '${user.tanggal_lahir}', '${user.username}', '${user.password}')">Edit</button>
+                                <button onclick="deleteUser(${user.idadmin})">Delete</button>
+                            </td>
+                        </tr>`;
+                        table.innerHTML += row;
+                    });
+                });
+        }
+
+        function createUser() {
+            const nama_admin = document.getElementById("nama_admin").value;
+            const tanggal_lahir = document.getElementById("tanggal_lahir").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            fetch("https://webacp16.merak.web.id/API-peminjaman-barang/POST_admin.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ nama_admin, tanggal_lahir, username, password }),
+            })
+            .then(response => response.json())
+            .then(() => {
+                document.getElementById("userForm").reset();
+                loadUsers();
+            });
+        }
+function editUser(id, nama_admin, tanggal_lahir, username, password) {
+    document.getElementById("idadmin").value = id;
+    document.getElementById("nama_admin").value = nama_admin;
+    document.getElementById("tanggal_lahir").value = tanggal_lahir;
+    document.getElementById("username").value = username;
+    document.getElementById("password").value = password;
+}
+
+function updateUser(id) {
+    const nama_admin = document.getElementById("nama_admin").value;
+    const tanggal_lahir = document.getElementById("tanggal_lahir").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    fetch("https://webacp16.merak.web.id/API-peminjaman-barang/PUT_admin.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id, nama_admin, tanggal_lahir, username, password }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Gagal mengubah data. Silakan coba lagi.");
+        }
+        return response.json();
+    })
+    .then(() => {
+        document.getElementById("userForm").reset();
+        loadUsers();
+        alert("Data berhasil diperbarui!");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert(error.message);
+    });
+}
+
+function deleteUser(id) {
+    fetch("https://webacp16.merak.web.id/API-peminjaman-barang/DELETE_admin.php", {
+        method: "POST",  // Pastikan server menerima POST untuk operasi delete jika ini benar
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Gagal menghapus data. Silakan coba lagi.");
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) { // Asumsi server mengembalikan status 'success' saat berhasil
+            alert("Data berhasil dihapus.");
+            loadUsers(); // Refresh tabel setelah penghapusan
+        } else {
+            alert("Gagal menghapus data: " + (data.message || "Tidak ada pesan error dari server."));
+        }
+    })
+    .catch(error => {
+        console.error("Error saat menghapus data:", error);
+        alert("Terjadi kesalahan saat mencoba menghapus data.");
+    });
+}
+
+
+    </script>
+</body>
+</html>
