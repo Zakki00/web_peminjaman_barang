@@ -13,70 +13,71 @@ body {
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
-    padding: 20px 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 450px;
+    padding: 25px 35px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
     width: 100%;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .detail-container:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .detail-container h2 {
-    margin: 0 0 20px;
+    margin-bottom: 20px;
     font-size: 26px;
     color: #34495e;
     text-align: center;
 }
 
-.detail-container p {
-    margin: 12px 0;
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-}
-
-.detail-container .data-title {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.detail-container .data-value {
-    color: #3498db;
-}
-
-.detail-container .action-buttons {
-    margin-top: 20px;
+.detail-container form {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-.detail-container .action-buttons button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
+.detail-container label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #34495e;
     font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.detail-container .action-buttons button.edit {
+.detail-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-container input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+.detail-container button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
     background-color: #3498db;
-    color: #fff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.detail-container .action-buttons button.edit:hover {
+.detail-container button:hover {
     background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
-.detail-container .action-buttons button.delete {
-    background-color: #e74c3c;
-    color: #fff;
-}
-
-.detail-container .action-buttons button.delete:hover {
-    background-color: #c0392b;
+.detail-container button:active {
+    transform: translateY(0);
 }
