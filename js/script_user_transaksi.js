@@ -35,7 +35,6 @@ function renderDetail(data) {
     if (data) {
         container.innerHTML = `
             <h2>${data.nama_barang}</h2>
-            <p>ID: ${data.idbarang}</p>
             <p>Jumlah: ${data.jumlah_barang}</p>
             `
         ;

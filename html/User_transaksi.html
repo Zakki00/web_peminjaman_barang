@@ -10,56 +10,153 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            background-color: #f9f9f9;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f4f6f9;
         }
+
         .detail-container {
             background: #fff;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .detail-container h2 {
+            margin: 0;
+            font-size: 22px;
+            color: #333;
+            text-align: center;
+        }
+
+        .input-container {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
         }
-        .detail-container h2 {
-            margin: 0 0 10px;
-            font-size: 24px;
-            color: #333;
-        }
-        .detail-container p {
-            margin: 8px 0;
-            font-size: 16px;
+
+        .input-container label {
+            display: block;
+            font-size: 14px;
             color: #555;
+            margin-bottom: 6px;
+        }
+
+        .input-container input,
+        .input-container select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-container input:focus,
+        .input-container select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .input-container button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .input-container button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .input-container button:active {
+            transform: translateY(0);
+        }
+
+        .input-container input[type="date"]::placeholder {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .input-container input[type="date"] {
+            text-align: left;
+        }
+
+        /* Responsif */
+        @media (max-width: 500px) {
+            .detail-container,
+            .input-container {
+                padding: 15px;
+            }
+            .input-container input,
+            .input-container select,
+            .input-container button {
+                font-size: 13px;
+                padding: 8px;
+            }
+            .input-container button {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="detail-container" id="detailContainer">
-        <h2>Loading...</h2>
+        <h2>Detail Data</h2>
     </div>
-    <form id="transaksi">
-       
-        <input type="date" id="tanggal_peminjaman" placeholder="tanggal_peminjaman">
-        <input type="date" id="tanggal_pengembalian" placeholder="tanggal_pengembalian">
-        <button type="submit">Pinjam</button>
-        <label for="angka">Pilih Angka:</label>
-        <select id="angka" name="angka">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-    </form>
-    
+
+    <div class="input-container">
+        <form id="transaksi">
+            <label for="tanggal_peminjaman">Tanggal Peminjaman</label>
+            <input 
+                type="date" 
+                id="tanggal_peminjaman" 
+                placeholder="Pilih tanggal peminjaman"
+            >
+
+            <label for="tanggal_pengembalian">Tanggal Pengembalian</label>
+            <input 
+                type="date" 
+                id="tanggal_pengembalian" 
+                placeholder="Pilih tanggal pengembalian"
+            >
+
+            <label for="angka">Jumlah Barang yang Ingin Dipinjam</label>
+            <select id="angka" name="angka">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+
+            <button type="submit">Pinjam</button>
+        </form>
+    </div>
 
     <script src="../js/script_user_transaksi.js"></script>
 </body>

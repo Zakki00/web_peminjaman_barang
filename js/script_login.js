@@ -3,13 +3,17 @@ document.getElementById("login").addEventListener("submit", function (event) {
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
+    if(!username || !password){
+    alert("Username dan password tidak boleh kosong");
+    }else{
+        if (username === "Admin") {
+            login_admin(username, password);
+        }else {
+            login_user(username, password);
+     }
 
-    if (username === "Admin") {
-        login_admin(username, password);
-    } else {
-        login_user(username, password);
     }
-
+  
     // Fungsi login untuk admin
     function login_admin(username, password) {
         fetch("https://webacp16.merak.web.id/API-peminjaman-barang/GET_admin.php")

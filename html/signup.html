@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/signup.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+
     <title>Signup</title>
 </head>
 <body>
-    <form id="signup">
-        <input type="text" id="nama" name="nama_admin" placeholder="Nama Admin">
-        <input type="text" id="tanggal_lahir" name="tanggal_lahir" placeholder="Tanggal Lahir">
-        <input type="text" id="username" name="username" placeholder="Username">
-        <input type="text" id="password" name="password" placeholder="Password">
-        <button type="submit">Sign Up</button>
-    </form>
+    <div class="container">
+        <div class="form-wrapper">
+            <form id="signup">
+                <h2>Sign Up</h2>
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nama" name="nama_admin" placeholder="Nama">
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" id="tanggal_lahir" name="tanggal_lahir" placeholder="Tanggal Lahir">
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <div class="image-container">
+                <img alt="Illustration of a desk with a laptop, chair, and plants" 
+                     src="https://storage.googleapis.com/a1aa/image/ZCUTn1iofQzWby6Hzf2h93r1XHxFxDJ5puDsIPaTnWDBIM1TA.jpg" />
+            </div>
+        </div>
+
+    </div>
+    
 </body>
+<script src="../js/scirpt_signup.js"></script>
 </html>

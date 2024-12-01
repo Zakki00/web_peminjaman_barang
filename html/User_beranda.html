@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sidebar Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style_beranda_user.css">
 </head>
 <body>
-
-    <button onclick="location.href='User_peminjaman.html'">peminjaman</button>
-    <button onclick="location.href='User_pengembalian.html'">pengembalian</button>
-    
+    <!-- Sidebar -->
+    <div id="nav-bar">
+        <div id="nav-header">
+            <a href="#">Peminjaman Barang</a>
+        </div>
+        <div id="nav-content">
+            <a class="nav-button" href="User_beranda.html">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a class="nav-button" href="User_peminjaman.html">
+                <i class="fas fa-book"></i>
+                Peminjaman
+            </a>
+            <a class="nav-button" href="User_pengembalian.html">
+                <i class="fas fa-undo"></i>
+                Pengembalian
+            </a>
+        </div>
+        <button id="logout" class="logout-button" >Logout</button>
+    </div>
+    <!-- Main Content -->
+    <div id="main-content">
+        <h1>Welcome</h1>
+        <p>Choose an option from the sidebar to continue.</p>
+    </div>
 </body>
+<script src="../js/script_user_beranda.js"></script>
 </html>

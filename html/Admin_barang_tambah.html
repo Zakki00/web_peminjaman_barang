@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Web App</title>
+    <title>Tambah Barang - Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* Reset dan styling umum */
@@ -75,7 +75,9 @@
 
         /* Konten utama */
         .content {
-            margin-left: 250px;
+            left: 10;
+            margin-left: 800px;
+            margin-top: 200px;
             padding: 20px;
             flex-grow: 1;
             background-color: #f8f9fa;
@@ -83,6 +85,40 @@
 
         .content h1 {
             margin-bottom: 20px;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-container input,.form-container button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-container input {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #2c3e50;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #34495e;
         }
     </style>
 </head>
@@ -106,14 +142,19 @@
             <i class="fas fa-sign-out-alt"></i>Logout
         </button>
     </div>
-    <div class="content">
-        <h1>Selamat Datang di Halaman Admin</h1>
-        <p>Gunakan tombol di sidebar untuk navigasi.</p>
-    </div>
-    <script src="../js/script_admin_beranda.js"></script>
+    <form id="barang">
+        <div class="content">
+            <h1>Tambah Barang</h1>
+            <div class="form-container">
+                <form>
+                    <input type="text" id="nama_barang" name="nama_barang" placeholder="Nama Barang" required>
+                    <input type="number" id="jumlah_barang" name="jumlah_barang" placeholder="Jumlah Barang" required>
+                    <button type="submit">Tambah</button>
+                </form>
+            </div>
+        </div>
+    </form>
+    <script src="../js/script_admin_barang_tambah.js"></script>
 </body>
+
 </html>
-
-
-
-

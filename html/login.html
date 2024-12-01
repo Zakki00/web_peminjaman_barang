@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
     <title>Login</title>
 </head>
 <body>
-    <form id = "login" >
-        <input type="text" id="username" name="username" placeholder="username">
-        <input type="text" id= "password" name="password"placeholder="password">
-        <button type="submit">Login</button>
-        <button type="button" name="signup" onclick="location.href='signup.html';">Sign Up</button>
-    </form>
-    
+    <div class="container">
+        <div class="form-wrapper">
+            <form id="login">
+                <h2>Log In</h2>
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn">Log In</button>
+                <button type="button" class="btn-secondary" name="signup" onclick="location.href='signup.html';">Sign Up</button>
+            </form>
+            <div class="image-container">
+                <img alt="Illustration of a desk with a laptop, chair, and plants" height="400" src="https://storage.googleapis.com/a1aa/image/fameT5rNT7meQo9sD6A3BV00jQafIO8Fv59FT2GEN7emgnpeE.jpg" width="400"/>
+
+            </div>
+        </div>
+    </div>
 </body>
 <script src="../js/script_login.js"></script>
 </html>

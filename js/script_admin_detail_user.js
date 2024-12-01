@@ -1,18 +1,18 @@
-document.addEventListener("DOMContentLoaded", ()=>{
-    if(localStorage.getItem("iduser") === null){
-        window.location.href = "../html/login.html";
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("idadmin") === null) {
+        window.location.href = "../html/login.html"; // Redirect ke halaman login jika belum login
     }
-    
 });
-document.getElementById("logout").addEventListener("click", ()=>{
-    localStorage.removeItem("iduser");
-    window.location.href = "../html/login.html";
+
+document.getElementById("logout").addEventListener("click", () => {
+    localStorage.removeItem("idadmin");
+    window.location.href = "../html/login.html"; // Redirect ke halaman login setelah logout
 });
 
 // Fungsi untuk fetch data dari API
 async function fetchData() {
     try {
-        const response = await fetch("https://webacp16.merak.web.id/API-peminjaman-barang/GET_barang.php");
+        const response = await fetch("https://webacp16.merak.web.id/API-peminjaman-barang/GET_PEMINJAMAN.php");
         const data = await response.json();
 
         // Panggil fungsi untuk render data
@@ -33,17 +33,11 @@ function renderData(items) {
 
         // Konten card
         card.innerHTML = `
+            <h2>${item.nama_user}</h2>
             <h3>${item.nama_barang}</h3>
-            <p>${item.jumlah_barang}</p>
+            <p>${item.jumlah}</p>
            
         `;
-
-        // Event klik untuk card
-        card.addEventListener("click", () => {
-            // Arahkan ke halaman transaksi
-            window.location.href = `../html/User_transaksi.html?id=${item.idbarang}`;
-        });
-
         // Tambahkan card ke container
         container.appendChild(card);
     });

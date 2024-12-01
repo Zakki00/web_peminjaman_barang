@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f6f8;
+}
+
+.detail-container {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.detail-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.detail-container h2 {
+    margin: 0 0 20px;
+    font-size: 26px;
+    color: #34495e;
+    text-align: center;
+}
+
+.detail-container p {
+    margin: 12px 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.detail-container .data-title {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.detail-container .data-value {
+    color: #3498db;
+}
+
+.detail-container .action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-container .action-buttons button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.detail-container .action-buttons button.edit {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.detail-container .action-buttons button.edit:hover {
+    background-color: #2980b9;
+}
+
+.detail-container .action-buttons button.delete {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.detail-container .action-buttons button.delete:hover {
+    background-color: #c0392b;
+}

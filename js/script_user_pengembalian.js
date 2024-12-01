@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", ()=>{
+    if(localStorage.getItem("iduser") === null){
+        window.location.href = "../html/login.html";
+    }
+    
+});
+document.getElementById("logout").addEventListener("click", ()=>{
+    localStorage.removeItem("iduser");
+    window.location.href = "../html/login.html";
+});
+
+
 let id_barang = null;
 let nama_barang = null;
 let jumlah_barang = null;
@@ -56,7 +68,6 @@ async function pengembalian(idtransaksi, jumlah, idbarang) {
         }
 
         const updatedStok = parseInt(jumlah_barang) + parseInt(jumlah);
-
         const updateResponse = await fetch(`https://webacp16.merak.web.id/API-peminjaman-barang/PUT_barang.php?id=${idbarang}`, {
             method: "PUT",
             headers: {
